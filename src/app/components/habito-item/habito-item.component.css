@@ -1,0 +1,66 @@
+.habito-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid #d1e7dd;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.habito-card.concluido {
+  background: #f3fbf7;
+  opacity: 0.85;
+}
+
+.habito-card.concluido .titulo {
+  text-decoration: line-through;
+  color: #52796f;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.titulo {
+  font-weight: 600;
+  color: #1b4332;
+}
+
+.meta {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+  padding-left: 26px;
+  font-size: 0.85rem;
+}
+
+.badge {
+  background: #d8f3dc;
+  color: #1b4332;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+.co2 {
+  color: #2d6a4f;
+}
+
+.btn-remover {
+  background: #fff0f0;
+  color: #b42318;
+  border: 1px solid #fecdca;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-remover:hover {
+  background: #fee4e2;
+}

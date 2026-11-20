@@ -1,0 +1,21 @@
+<div class="container">
+  <header class="topo">
+    <div>
+      <h1>🌱 EcoHábito</h1>
+      <p class="subtitulo">Registro e metas de hábitos sustentáveis</p>
+    </div>
+
+    <nav class="menu">
+      <a routerLink="/" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">
+        Meus Hábitos
+      </a>
+      <a routerLink="/sobre" routerLinkActive="ativo">
+        Sobre & ODS
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <router-outlet />
+  </main>
+</div>

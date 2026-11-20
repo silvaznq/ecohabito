@@ -1,0 +1,54 @@
+<section class="painel">
+  <div class="cards-impacto">
+    <div class="stat-box">
+      <span class="stat-label">Hábitos concluídos</span>
+      <strong class="stat-valor">{{ totalConcluidos }} / {{ habitos.length }}</strong>
+    </div>
+    <div class="stat-box destaque">
+      <span class="stat-label">Impacto estimado evitado</span>
+      <strong class="stat-valor">{{ impactoCo2 }} kg CO₂</strong>
+    </div>
+  </div>
+
+  <p class="dica"><strong>Dica do dia:</strong> {{ dicaDoDia }}</p>
+
+  <form class="form-habito" (ngSubmit)="adicionar()">
+    <input
+      type="text"
+      name="titulo"
+      [(ngModel)]="novoTitulo"
+      placeholder="Ex.: Reutilizar água da máquina de lavar..."
+      required
+    />
+
+    <select name="categoria" [(ngModel)]="novaCategoria">
+      <option value="Resíduos">Resíduos</option>
+      <option value="Água">Água</option>
+      <option value="Energia">Energia</option>
+      <option value="Mobilidade">Mobilidade</option>
+    </select>
+
+    <input
+      type="number"
+      name="co2"
+      [(ngModel)]="novoCo2"
+      step="0.1"
+      min="0.1"
+      title="Estimativa de kg de CO2 evitado"
+    />
+
+    <button type="submit">Adicionar</button>
+  </form>
+
+  <ul class="lista-habitos">
+    @for (item of habitos; track item.id) {
+      <app-habito-item
+        [habito]="item"
+        (alternar)="aoAlternarHabito($event)"
+        (remover)="aoRemoverHabito($event)"
+      />
+    } @empty {
+      <p class="vazio">Nenhum hábito cadastrado ainda. Adicione o primeiro acima!</p>
+    }
+  </ul>
+</section>

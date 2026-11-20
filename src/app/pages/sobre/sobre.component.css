@@ -1,0 +1,13 @@
+.sobre-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  line-height: 1.6;
+  color: #1e293b;
+}
+
+.sobre-card h2 {
+  margin-top: 0;
+  color: #14532d;
+}

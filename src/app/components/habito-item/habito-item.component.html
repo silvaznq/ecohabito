@@ -1,0 +1,21 @@
+<li class="habito-card" [class.concluido]="habito().concluido">
+  <div class="habito-info">
+    <label class="checkbox-label">
+      <input
+        type="checkbox"
+        [checked]="habito().concluido"
+        (change)="onAlternar()"
+      />
+      <span class="titulo">{{ habito().titulo }}</span>
+    </label>
+
+    <div class="meta">
+      <span class="badge">{{ habito().categoria }}</span>
+      <span class="co2">~{{ habito().co2EstimadoKg }} kg CO₂</span>
+    </div>
+  </div>
+
+  <button type="button" class="btn-remover" (click)="onRemover()">
+    Remover
+  </button>
+</li>
