@@ -6,4 +6,5 @@ import { Component } from '@angular/core';
   templateUrl: './sobre.component.html',
   styleUrl: './sobre.component.css',
 })
+// Tela da página Sobre & ODS (o conteúdo visual fica no HTML da página)
 export class SobreComponent {}

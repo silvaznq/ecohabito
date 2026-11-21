@@ -8,4 +8,5 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
+// Componente raiz que segura a navegação e renderiza a rota ativa
 export class App {}

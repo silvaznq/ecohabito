@@ -5,8 +5,9 @@ import { Habito } from '../models/habito.model';
   providedIn: 'root',
 })
 export class HabitoService {
+  // Nome salvo no navegador ao dar F5
   private readonly STORAGE_KEY = 'ecohabito_lista_v1';
-
+// Exemplos iniciais pra lista não começar vazia
   private habitosIniciais: Habito[] = [
     {
       id: 1,
@@ -30,14 +31,15 @@ export class HabitoService {
       concluido: false,
     },
   ];
-
+// Lista atual dos hábitos que aparece na tela
   private habitos: Habito[] = [];
-
+// Assim que o serviço sobe, já puxa os hábitos salvos
   constructor() {
     this.carregarDoStorage();
   }
-
+// Puxa os hábitos salvos ou carrega os exemplos se for a primeira vez
   private carregarDoStorage(): void {
+    // Evita quebrar no servidor/SSR onde não existe localStorage
     if (typeof localStorage === 'undefined') {
       this.habitos = [...this.habitosIniciais];
       return;
@@ -51,18 +53,18 @@ export class HabitoService {
       this.salvarNoStorage();
     }
   }
-
+// Salva a lista toda no navegador pra não perder nada no F5
   private salvarNoStorage(): void {
     if (typeof localStorage === 'undefined') {
       return;
     }
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.habitos));
   }
-
+// Devolve a lista atual de hábitos
   listarHabitos(): Habito[] {
     return this.habitos;
   }
-
+// Monta o hábito novo, coloca no começo da lista e já salva
   adicionarHabito(
     titulo: string,
     categoria: Habito['categoria'],
@@ -72,24 +74,25 @@ export class HabitoService {
       id: Date.now(),
       titulo: titulo.trim(),
       categoria,
+      // Se não botar número positivo, cai nesse valor padrão de 0.3
       co2EstimadoKg: co2EstimadoKg > 0 ? co2EstimadoKg : 0.3,
       concluido: false,
     };
     this.habitos = [novoHabito, ...this.habitos];
     this.salvarNoStorage();
-  }
+  }// Marca ou desmarca o hábito como feito e salva a mudança
 
   alternarConclusao(id: number): void {
     this.habitos = this.habitos.map((item) =>
       item.id === id ? { ...item, concluido: !item.concluido } : item
     );
     this.salvarNoStorage();
-  }
+  } // Remove o hábito pelo id e atualiza o storage
 
   removerHabito(id: number): void {
     this.habitos = this.habitos.filter((item) => item.id !== id);
     this.salvarNoStorage();
-  }
+  } // Soma só o CO2 dos hábitos concluídos, arredondado em 2 casas
 
   calcularImpactoCo2Concluido(): number {
     const total = this.habitos
